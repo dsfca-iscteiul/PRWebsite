@@ -1,0 +1,43 @@
+{% extends 'modulo/index.html' %}
+{% block forum %}
+{% endblock %}
+
+{% block body %}
+{% if aulas %}
+<ul>
+{% for aula in aulas %}
+<li>{{aula.hora_inicio}}<br>
+    {{aula.hora_fim}}<br>
+    {{aula.sala}}
+</li>
+{% endfor %}
+ {% endif %}
+</ul>
+<form action="{% url 'modulo:criar_aula' semana.id %}" method="post">
+  {% if error_message %}
+ <p><strong>{{error_message}}</strong></p>
+  {% endif %}
+   <input type="radio" value="Segunda-Feira" name="dia" checked>
+    <label>Segunda-Feira</label><br>
+    <input type="radio" value="Terca-Feira" name="dia">
+    <label>Terça-Feira</label><br>
+    <input type="radio" value="Quarta-Feira" name="dia">
+    <label>Quarta-Feira</label><br>
+    <input type="radio" value="Quinta-Feira" name="dia">
+    <label>Quinta-Feira</label><br>
+    <input type="radio" value="Sexta-Feira" name="dia">
+    <label>Sexta-Feira</label><br>
+    sala:
+    <input type="text" name="sala" required><br>
+    hora-inicio
+    <select name="hora_inicio">
+      <option value="08:00"  >08:00</option>
+      <option value="09:30"  >09:30</option>
+      <option value="11:00"  >11:00</option>
+    </select>
+    <input type="submit" value="Criar aula" >
+ {% csrf_token %}
+</form>
+
+
+{% endblock %}

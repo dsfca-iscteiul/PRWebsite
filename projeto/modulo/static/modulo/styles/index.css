@@ -1,0 +1,39 @@
+/*nav.menu li{
+display:inline-block;
+margin-left:70px
+
+}
+
+nav.menu {
+background-color:red;
+float:center;
+}
+
+nav.menu a{
+font-size:50px;
+}
+
+nav.menu ul{
+margin:0;
+padding:0;
+list-style:none;
+}
+
+nav.menu a:hover{
+color:black;
+}
+
+nav.menu a::before{
+content:'';
+display:block;
+height:5px;
+width:100%
+}
+
+nav.forum {
+float:right;
+}
+
+body{
+background-color:pink;
+}*/

@@ -1,0 +1,24 @@
+{% extends 'modulo/index.html' %}
+{% block forum %}
+{% endblock %}
+
+{% block body %}
+<section class="whitebody">
+<form action="{% url 'modulo:adicionarpergunta' miniteste.id %}" method="post">
+     {% csrf_token %}
+    Texto pergunta:
+    <input  type="text" name="pergunta" id="pergunta" size="100" required>
+        Resposta1:
+        <input type="radio" name="resposta" id="1" value="1" checked> <input type="text" name="r1" size="50" required><br>
+         Resposta2:
+        <input type="radio" name="resposta" id="2" value="2"> <input type="text" name="r2" size="50" required><br>
+        Resposta3:
+        <input type="radio" name="resposta" id="3" value="3"> <input type="text" name="r3" size="50" required><br>
+         Resposta4:
+        <input type="radio" name="resposta" id="4" value="4"> <input type="text" name="r4" size="50" required><br>
+
+    <input class="botao" id="botao5" type="submit" value="submeter">
+
+</form>
+</section>
+{% endblock %}

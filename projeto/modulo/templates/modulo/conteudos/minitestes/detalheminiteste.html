@@ -1,0 +1,39 @@
+{% extends 'modulo/index.html' %}
+{% block forum %}
+{% endblock %}
+{% block body %}
+
+<h1>Mini Teste {{ miniteste.numero }} - {{ miniteste.descricao }}</h1>
+
+{% if error_message %}
+<p><strong>{{error_message}}</strong></p>
+{% endif %}
+{% if user.id not in ids %}
+    {% if questoes %}
+<form action="{% url 'modulo:enviar' miniteste.id%}" method="post">
+    {% csrf_token %}
+    <ol>
+        {% for questao in questoes %}
+        <li>{{questao.texto_questo}}<br>
+            {% for resposta in questao.respostamt_set.all %}
+            <input type="radio" value="{{ resposta.id }}" id="{{ resposta.id }}" name="resposta{{questao.id}}">
+            <label>{{ resposta.texto_resposta }}</label><br>
+            {% endfor %}
+
+        </li>
+        {% endfor %}
+    </ol>
+    {% if not user.is_superuser %}
+    <input type="submit" value="enviar">
+    {% endif %}
+</form>
+{% else %}
+<p><strong>Não existe questões</strong></p>
+{% endif %}
+{% else  %}
+<p><strong>O Aluno já fez o miniteste</strong></p>
+{% endif %}
+{% if user.is_superuser %}
+<a href="{% url 'modulo:criarpergunta' miniteste.id%}"><input type="button" value="criar pergunta"></a>
+{% endif %}
+{% endblock %}

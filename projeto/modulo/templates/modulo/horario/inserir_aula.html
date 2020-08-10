@@ -1,0 +1,12 @@
+{% extends 'modulo/index.html' %}
+{% block forum %}
+{% endblock %}
+
+{% block body %}
+{% if semanas %}
+{% for semana in semanas %}
+<a href="{% url 'modulo:detalhe_semana' semana.id %}">semana {{semana.id}}</a><br>
+{% endfor %}
+{% endif %}
+<a href="{% url 'modulo:criar_semana' %}"><button>criar semana</button></a>
+{% endblock %}

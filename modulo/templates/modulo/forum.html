@@ -1,0 +1,47 @@
+{% extends 'modulo/index.html' %}
+{% block forum %}
+{% endblock %}
+
+{% block body %}
+<section class="whitebody">
+<h1>Forum Perguntas </h1>
+<form action="{% url 'modulo:procura' %}" method="post">
+    <input class="tf_forum" type="text" name="q"><input class="botao" id="procurar" type="submit" value="Procurar">
+    {% csrf_token %}
+</form>
+
+{% if latest_question_list %}
+<ul>
+    {% for questao in latest_question_list %}
+    <section class="border1">
+     <table class="tablequestao">
+            <tr>
+                <a class="questao_forum" href="{% url 'modulo:detalhepostforum' questao.id %}">
+                    {{ questao.questao_texto }}
+                </a>
+                <span class="visu2">(Visualizações: {{questao.visualizacao_set.all|length}})</span>
+            </tr>
+            <tr>
+                <td class="data2">{{questao.pub_data}}</td>
+                <td class="autor2">Autor: {{questao.username}}</td>
+            </tr>
+
+
+        </table>
+    </section>
+    {% endfor %}
+</ul>
+{% else %}
+<p><strong>Não há questões recentes</strong></p>
+{% endif %}
+
+<form action="{% url 'modulo:enviar_pergunta_modulo' %}" method="post">
+    {% csrf_token %}
+    <div class="addPergunta">
+        <label for="pergunta">Adicionar pergunta:</label>
+        <textarea class="espacoResposta" name="pergunta" id="pergunta" rows="3" required></textarea>
+        <input class="botao" id="enviar" type="submit" value="enviar">
+    </div>
+</form>
+</section>
+{% endblock %}

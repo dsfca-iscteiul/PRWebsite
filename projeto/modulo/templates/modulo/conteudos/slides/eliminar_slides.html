@@ -1,0 +1,17 @@
+{% extends 'modulo/index.html' %}
+{% block forum %}
+{% endblock %}
+{% block body %}
+<h1>Eliminar Slide</h1>
+{% if error_message %}
+<p><strong>{{error_message}}</strong></p>
+{% endif %}
+<form action="{% url 'modulo:apagar_slide' %}" method="post">
+{% for slide in slides %}
+<input type="radio" value="{{slide.id}}" id="{{slide.id}}" name="slide">
+    <label>{{ slide.nome_pasta }}</label><br>
+{% endfor %}
+    <input type="submit" value="eliminar">
+    {% csrf_token %}
+</form>
+{% endblock %}

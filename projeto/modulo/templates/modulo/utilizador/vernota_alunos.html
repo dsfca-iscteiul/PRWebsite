@@ -1,0 +1,34 @@
+{% extends 'modulo/index.html' %}
+{% block forum %}
+{% endblock %}
+
+{% block body %}
+<h1>Alunos</h1>
+{% if alunos %}
+
+{% csrf_token %}
+<table class="rwd-table">
+    <tr>
+        <th>Número</th>
+        <th>Nome do aluno</th>
+    </tr>
+    {% for aluno in alunos %}
+    <form action="{% url 'modulo:vernota' aluno.id %}" method="post">
+        {% csrf_token %}
+        <tr>
+            <td data-th="Número">
+                {{ aluno.id }}
+            </td>
+            <td data-th="Nome do aluno">
+                <button type="submit" value="{{ aluno.id }}" id="{{ aluno.id}}" name="aluno_id">
+                    {{ aluno }}
+                </button>
+            </td>
+        </tr>
+    </form>
+    {% endfor %}
+</table>
+{% else %}
+<p><strong>Não há alunos</strong></p>
+{% endif %}
+{% endblock %}

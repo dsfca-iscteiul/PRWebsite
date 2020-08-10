@@ -1,0 +1,26 @@
+{% extends 'modulo/index.html' %}
+{% block forum %}
+{% endblock %}
+{% block body %}
+<h1>Nome do Aluno: {{aluno.nome_completo}}</h1><br>
+<form>
+<table border="1">
+    <p><strong>Exercício Semanal</strong></p>
+ <tr>
+ <td>Semana</td>
+ <td>Nota</td>
+ </tr>
+    {% for exercicio in aluno.exercicio_set.all %}
+ <tr>
+      <td>{{exercicio.semana}}</td>
+      <td>{{exercicio.nota}}</td>
+ </tr>
+    {% endfor %}
+</table>
+<p>Trabalho Final = {{trabalho_final}}</p>
+<p><strong>Nota Final = {{aluno.calcular_nota_final}}</strong></p>
+
+ <a href="{% url 'modulo:utilizador' %}"><input type="button" value="ok"></a>
+</form>
+
+{%endblock%}

@@ -1,0 +1,54 @@
+.botao {
+    margin: 20px 0 0 0;
+    padding: 6px 18px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: bold;
+    background-color: rgba(255, 239, 213, 0.5);
+    color: rgb(50, 50, 50);
+}
+
+.botao2 {
+    margin: -10px 0 0 0;
+    padding: 6px 18px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: bold;
+    background-color: rgba(255, 239, 213, 0.5);
+    color: rgb(50, 50, 50);
+}
+
+.botao:hover ,.botao2:hover{
+    background-color: rgba(255, 219, 203, 0.5);
+}
+
+/*miniteste*/
+#botao1 {
+    margin-top: 7px;
+}
+
+.pastamini {
+    padding: 20px;
+    width: 150px;
+    margin-bottom: 5px;
+    border-radius: 10px;
+}
+
+.pastamini:hover {
+    background-color: lightblue;
+}
+
+/*slides*/
+#botaoslides {
+    margin-top: -8px;
+}
+
+#botao4, #botao5 {
+    margin-top: 0px;
+}
+
+/*miniteste*/
+
+.criarminiteste {
+    margin-left: -1000px;
+}

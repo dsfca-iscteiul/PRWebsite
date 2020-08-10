@@ -1,0 +1,27 @@
+% extends 'modulo/index.html' %}
+{% block forum %}
+{% endblock %}
+
+
+{% block body %}
+<h1>Datas das avaliações</h1>
+{% if datas %}
+<ol>
+    <form action="{% url 'modulo:apagar_data' %}" method="post">
+        {% for data in datas %}
+
+        {% csrf_token %}
+        <input type="radio" value="{{data.id}}" id="{{ data.id}}" name="data">
+        <label>
+            {{ data.descrição}}<br>
+            {{ data.sala }}
+        </label><br>
+        {% endfor%}
+        <input type="submit" value="Eliminar">
+    </form>
+</ol>
+{% else %}
+<p><strong>Não há datas de avaliações no momento</strong></p>
+{% endif%}
+{% endblock %}
+

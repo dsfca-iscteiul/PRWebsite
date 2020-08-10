@@ -1,0 +1,52 @@
+/*h1 .center {
+    font-size: 20px;
+    text-align: center;
+    display: inline;
+    margin-bottom: 100%;
+    font-family: Helvetica, Arial, Verdana, sans-serif;
+    border-color: black;
+    color: dodgerblue;
+}*/
+
+h1 {
+    font-family: Helvetica, Arial, Verdana, sans-serif;
+    font-size: 28px;
+    text-align: left;
+}
+
+.conteudos {
+    padding: 10px;
+    font-size: 20px;
+}
+
+.center {
+    border-spacing: 0px 8px;
+    margin: auto;
+    width: 40%;
+    padding: 0px;
+}
+
+button {
+    height: 80px;
+    width: 150px;
+    background-color: white;
+    border-radius: 5px;
+    margin: 0 10px 5px 0;
+
+    font: 15px Helvetica, Arial, Verdana, sans-serif;
+}
+
+button:hover {
+    /*box-shadow: 0px 0px 1px 1px black;*/
+    background-color: rgb(200, 200, 200);
+}
+
+/*What is this*/
+.zona {
+    width: fit-content;
+    height: fit-content;
+
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 5px;
+}
+

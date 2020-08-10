@@ -1,0 +1,57 @@
+table.tabelahorario {
+  border: 4px solid #792396;
+  background-color: cyan;
+  width: 350px;
+  text-align: center;
+  border-collapse: collapse;
+}
+table.tabelahorario td, table.tabelahorario th {
+  border: 1px solid #555555;
+  padding: 5px 2px;
+}
+table.tabelahorario tbody td {
+  font-size: 14px;
+  font-weight: bold;
+  color: darkblue;
+}
+table.tabelahorario tr:nth-child(even) {
+  background: cyan;
+}
+table.tabelahorario thead {
+  background: #792396;
+  border: 4px solid #792396;
+}
+table.tabelahorario thead th {
+  font-size: 19px;
+  font-weight: bold;
+  color: #FFFFFF;
+  text-align: center;
+  border-left: 2px solid #792396;
+}
+table.tabelahorario thead th:first-child {
+  border-left: none;
+}
+
+table.tabelahorario tfoot {
+  font-size: 13px;
+  font-weight: bold;
+  color: #FFFFFF;
+  background: #CE3CFF;
+  background: -moz-linear-gradient(top, #da6dff 0%, #d34fff 66%, #CE3CFF 100%);
+  background: -webkit-linear-gradient(top, #da6dff 0%, #d34fff 66%, #CE3CFF 100%);
+  background: linear-gradient(to bottom, #da6dff 0%, #d34fff 66%, #CE3CFF 100%);
+  border-top: 5px solid #792396;
+}
+table.tabelahorario tfoot td {
+  font-size: 13px;
+}
+table.tabelahorario tfoot .links {
+  text-align: right;
+}
+table.tabelahorario tfoot .links a{
+  display: inline-block;
+  background: #792396;
+  color: #FFFFFF;
+  padding: 2px 8px;
+  border-radius: 5px;
+}

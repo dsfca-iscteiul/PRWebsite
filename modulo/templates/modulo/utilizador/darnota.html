@@ -1,0 +1,47 @@
+{% extends 'modulo/index.html' %}
+{% block forum %}
+{% endblock %}
+
+{% load staticfiles %}
+ <link rel="stylesheet" type="text/css" href="{% static 'modulo/styles/listadealunos.css' %}"/>
+
+{% block body %}
+
+<h>Atribuir nota</h>
+
+{% if not  alunos %}
+<p><strong>Não há alunos</strong></p>
+{% else %}
+
+{% if error_message %}
+<p><strong>{{error_message}}</strong></p>
+{% endif %}
+
+<form action="{% url 'modulo:procura_aluno' %}" method="post">
+    Pesquisar por número de aluno: <input type="text" name="q"><input type="submit" value="Procurar">
+    {% csrf_token %}
+</form>
+
+<form action="{% url 'modulo:darnota_view' %}" method="post">
+    {% csrf_token %}
+    <table class="rwd-table">
+        <tr>
+            <th>Número</th>
+            <th>Nome do aluno</th>
+        </tr>
+        {% for aluno in alunos %}
+        <tr>
+            <td data-th="Número">
+                {{ aluno.id }}
+            </td>
+            <td data-th="Nome do aluno">
+                <button type="submit" value="{{ aluno.id }}" id="{{ aluno.id}}" name="aluno_id">
+                    {{ aluno }}
+                </button>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</form>
+{% endif %}
+{% endblock %}

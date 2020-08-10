@@ -1,0 +1,20 @@
+{% extends 'modulo/index.html' %}
+{% block forum %}
+{% endblock %}
+
+{% block body %}
+<section class="whitebody">
+<h1>Slide {{exercicio.nome_exercicio}}</h1>
+{% if error_message %}
+<p><strong>{{error_message}}</strong></p>
+{% endif %}
+<form action="{% url 'modulo:apagar_ficheiroexercicio' exercicio.id %}" method="post">
+{% for ficheiro in ficheiros %}
+<input class="botao" type="radio" value="{{ficheiro.id}}" id="{{ficheiro.id}}" name="ficheiro">
+    <label>{{ficheiro.nome_ficheiro}}</label><br>
+{% endfor %}
+    <input class="botao" type="submit" value="eliminar">
+    {% csrf_token %}
+</form>
+</section>
+{% endblock %}

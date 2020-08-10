@@ -1,0 +1,81 @@
+table.tabelahorario {
+    border: 4px solid lightseagreen;
+    background-color: rgba(255, 239, 213, 0.5);
+    width: 350px;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+table.tabelahorario td, table.tabelahorario th {
+    border: 1px solid #555555;
+    padding: 16px 17px;
+}
+
+table.tabelahorario tbody td {
+    font-size: 14px;
+    font-weight: bold;
+    color: darkblue;
+}
+
+table.tabelahorario thead {
+    background: rgba(32, 178, 170, 0.7);
+    border-bottom: 4px solid darkblue;
+}
+
+table.tabelahorario thead th {
+    font-size: 19px;
+    font-weight: bold;
+    color: darkblue;
+    text-align: center;
+    border-left: 1px solid #555555;
+}
+
+table.tabelahorario thead th:first-child {
+    border-left: none;
+}
+
+table.tabelahorario tfoot {
+    font-size: 13px;
+    font-weight: bold;
+    color: lightseagreen;
+    background: rgba(32, 178, 170, 0.7);
+    /*background: -moz-linear-gradient(top, #da6dff 0%, #d34fff 66%, #CE3CFF 100%);
+    background: -webkit-linear-gradient(top, #da6dff 0%, #d34fff 66%, #CE3CFF 100%);
+    background: linear-gradient(to bottom, #da6dff 0%, #d34fff 66%, #CE3CFF 100%);*/
+    border-top: 5px solid darkblue;
+}
+
+table.tabelahorario tfoot td {
+    font-size: 13px;
+}
+
+table.tabelahorario tfoot .links {
+    text-align: right;
+}
+
+table.tabelahorario tfoot .links a {
+    display: inline-block;
+    background: darkblue;
+    color: #FFFFFF;
+    padding: 2px 8px;
+    border-radius: 5px;
+}
+
+.whitebody {
+    padding: 40px;
+}
+
+.botaoinseriraula {
+    margin: 10px 0 0 0;
+    padding: 6px 18px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: bold;
+    background-color: rgba(255, 239, 213, 0.5);
+    color: rgb(50, 50, 50);
+}
+
+.botaoinseriraula:hover {
+    background-color: darkblue;
+    color: white;
+}

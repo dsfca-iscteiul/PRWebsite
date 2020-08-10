@@ -1,0 +1,21 @@
+{% extends 'modulo/index.html' %}
+{% block forum %}
+{% endblock %}
+{% block body %}
+
+<h1>Nome do aluno: {{aluno.nome_completo}}</h1>
+<h2>ID do Aluno: {{aluno.id}}</h2><br>
+{% if error_message %}
+<p><strong>{{error_message}}</strong></p>
+{% endif %}
+<form action="{% url 'modulo:submeter_nota' aluno.id %}" method="post">
+    {% csrf_token %}
+    <input type="radio" value="trabalho" id="trabalho" name="tipo">
+    <label>Trabalho Final</label><br>
+    <input type="radio" value="exercicio" id="exercicio" name="tipo" checked>
+    <label>Exercício Semanal</label><br><br>
+    Nota:
+    <input type="text" name="nota"><br><br>
+    <input type="submit" value="submeter">
+</form>
+{% endblock %}

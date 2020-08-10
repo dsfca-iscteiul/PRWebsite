@@ -1,0 +1,40 @@
+:root {
+
+}
+
+.forum_lateral {
+    margin: 0px 0px 20px 65%;
+    border: 5px solid cadetblue;
+    width: 34%;
+    height: fit-content;
+    background-color: rgba(95,158,160, 0.6);
+}
+.forum_lateral h1 {
+    font-family: Helvetica, Arial, Verdana, sans-serif;
+    font-size: 30px;
+    text-align: center;
+}
+.forum_lateral a {
+    font-size: 19px;
+    padding: 0px 15px 15px 15px;
+    color: rgb(0,0,0);
+}
+
+.forum_lateral a:hover {
+    color: blue;
+}
+
+.data, .autor{
+    padding: 0px 15px 15px 15px;
+    font-size: 16px;
+    color: darkblue;
+}
+
+.tablequestao {
+    padding-bottom: 15px;
+}
+
+.visu {
+    font-size: 15px;
+}
+

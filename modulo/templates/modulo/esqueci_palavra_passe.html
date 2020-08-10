@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'modulo/styles/recuperarpalavrapasse.css' %}"/>
+</head>
+<!--<style>
+    label {
+        width: 150px;
+        float: left;
+        text-align: center;
+        padding-right: 12px;
+        margin-top: 12px;
+        clear: left;
+    }
+
+    input {
+        margin-top: 12px;
+    }
+
+    form {
+        float: center;
+        background-color: green;
+        width: 50%;
+    }
+
+    div.submit {
+        text-align: center;
+        padding: 15px;
+    }
+
+</style>-->
+
+<body>
+
+<form action="{% url 'modulo:enviar_email' %}" method="post">
+    <h1>Recuperação da palavra passe</h1>
+    <p>Para recuperar a sua palavra-passe, por favor introduza o seu nome de utilizador e email onde deseja receber
+        nova palavra passe.</p>
+    {% if error_message %}
+    <p><strong class="error">{{ error_message }}</strong></p>
+    {% endif %}
+    {% csrf_token %}
+    <div>
+        <label for="username">Nome de utilizador:</label>
+        <input type="text" name="username" required>
+    </div>
+    <div>
+        <label for="email">Email:</label>
+        <input type="email" name="email" required>
+    </div>
+    <div id="submit" class="submit">
+        <input class="button" type="submit" value="enviar"><br>
+    </div>
+    <a href="{% url 'modulo:login' %}">Voltar à página de login</a>
+</form>
+</body>
+</html>

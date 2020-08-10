@@ -1,0 +1,34 @@
+{% extends 'modulo/index.html' %}
+{% load staticfiles %}
+
+{% block forum %}
+{% endblock %}
+
+{% block body %}
+
+<h1>Exercicio {{ exercicio.nome_exercicio }}</h1>
+{% if error_message %}
+{{ error_message }}
+<br>
+{% endif %}
+
+{% if lista_ficheiros %}
+    {% for ficheiro in lista_ficheiros %}
+        {% with 'modulo/exercicios/'|add:exercicio.nome_exercicio|add:"/"|add:ficheiro as image_static %}
+            <a href="{% static image_static %}">{{ ficheiro }}</a><br>
+        {% endwith %}
+    {% endfor %}
+{% else %}
+<p><strong>Não há Exercicios {{ ficheiro.nome_exercicio }}</strong></p>
+{% endif%}
+<br>
+
+{% if user.is_superuser %}
+<form method="post" enctype="multipart/form-data">
+{% csrf_token %}
+<input type="file" name="myfile" required>
+<button type="submit">Upload</button>
+</form>
+<a href="{% url 'modulo:eliminar_ficheiro_exercicio' exercicio.id %}"><button>Eliminar Ficheiro</button></a>
+{% endif %}
+{% endblock %}

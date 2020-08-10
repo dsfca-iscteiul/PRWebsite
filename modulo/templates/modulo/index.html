@@ -1,0 +1,82 @@
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'modulo/styles/menu.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'modulo/styles/header.css' %}" />
+    <!--<script type="text/javascript" src="menuonclick.js"></script>-->
+    <link rel="stylesheet" type="text/css" href="{% static 'modulo/styles/home.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'modulo/styles/horario.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'modulo/styles/docentes.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'modulo/styles/forum.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'modulo/styles/datasdasavaliacoes.css' %}"/>
+</head>
+<body>
+<header>
+        <div class="utilizador">
+            <a href="{% url 'modulo:utilizador' %}">
+                <img src="{% static 'modulo/styles/User.png' %}">
+            </a>
+            <div class="nomeUser">{{ user.username }}</div>
+
+        </div>
+        <div class="titulo">
+            PR - Programação em Rede
+        </div>
+
+</header>
+
+
+<section>
+    <nav>
+        <ul class="main__menu">
+            <li class="list-item"><a class="home item--js" href="{% url 'modulo:index' %}"><span>Home</span></a></li>
+            <li class="list-item"><a class="about item--js" href="{% url 'modulo:conteudos' %}"><span>Conteúdos</span></a></li>
+            <li class="list-item"><a class="widget item--js" href="{% url 'modulo:docentes' %}"><span>Docentes</span></a></li>
+            <li class="list-item"><a class="kabobs item--js" href="{% url 'modulo:horario' 1 %}"><span>Horário</span></a></li>
+            <li class="list-item"><a class="contact item--js" href="{% url 'modulo:datasdasavaliacoes' %}"><span>Datas</span></a></li>
+            <li class="list-item"><a class="forum item--js" href="{% url 'modulo:forum' %}"><span>Fórum</span></a></li>
+        </ul>
+    </nav>
+</section>
+
+
+
+{% block body %}
+
+<section class="whitebody">
+
+{% endblock %}
+
+    {% block forum %}
+    <section class="forum_lateral">
+    <ul>
+        <h1>Recentes do forum:</h1>
+        {% if latest_question_list %}
+        {% for questao in latest_question_list %}
+
+        <table class="tablequestao">
+            <tr>
+                <a href="{% url 'modulo:detalhepostforum' questao.id %}">
+                    {{ questao.questao_texto }}
+                </a>
+                <span class="visu">(Visualizações: {{questao.visualizacao_set.all|length}})</span>
+            </tr>
+            <tr>
+                <td class="data">{{questao.pub_data}}</td>
+                <td class="autor">Autor: {{questao.username}}</td>
+            </tr>
+
+
+        </table>
+        {% endfor %}
+        {% else %}
+    </ul>
+        <p><strong>Não há questões recentes</strong></p>
+    {% endif %}
+    </section>
+   {% endblock %}
+</section>
+</body>
+</html>

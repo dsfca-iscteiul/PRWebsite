@@ -1,0 +1,42 @@
+{% extends 'modulo/index.html' %}
+{% block forum %}
+{% endblock %}
+
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'modulo/styles/pastasconteudos.css' %}"/>
+
+
+{% block body %}
+<section class="whitebody">
+<h1>Exercicios</h1>
+{% if error_message %}
+<p><strong>{{error_message}}</strong></p>
+{% endif %}
+{% if exercicios %}
+<ul>
+    {% for exercicio in exercicios %}
+    <li>
+        <button class="pastamini" onclick="location.href = '{% url 'modulo:detalhe_exercicio' exercicio.id %}'">
+            <a href="{% url 'modulo:detalhe_exercicio' exercicio.id%}">{{ exercicio.nome_exercicio }}</a>
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>Não há Exercicios</p>
+{% endif %}
+
+{% if user.is_superuser %}
+<p>
+    <a href="{% url 'modulo:eliminar_exercicio' %}"><input class="botao" type="button" value="Eliminar Pasta"></a>
+</p>
+
+<form action="{% url 'modulo:novo_exercicio' %}" method="post">
+    Nome da Pasta:
+    <input type="text" name="nome_exercicio" required>
+    <input class="botao" type="submit" value="Adicionar Pasta">
+    {%csrf_token%}
+</form>
+
+{% endif %}
+</section>
+{% endblock %}

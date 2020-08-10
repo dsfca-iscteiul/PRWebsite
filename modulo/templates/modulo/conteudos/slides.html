@@ -1,0 +1,41 @@
+{% extends 'modulo/index.html' %}
+{% block forum %}
+{% endblock %}
+
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'modulo/styles/pastasconteudos.css' %}"/>
+
+{% block body %}
+<section class="whitebody">
+<h1>Slides</h1>
+{% if error_message %}
+<p><strong>{{error_message}}</strong></p>
+{% endif %}
+{% if slides %}
+<ul>
+    {% for slide in slides %}
+    <li>
+        <button class="pastamini" onclick="location.href = '{% url 'modulo:detalhe_slide' slide.id %}'">
+            <a href="{% url 'modulo:detalhe_slide' slide.id %}">{{ slide.nome_pasta }}</a>
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>Não há Slides</p>
+{% endif %}
+
+{% if user.is_superuser %}
+<p>
+    <a href="{% url 'modulo:eliminar_slide' %}"><input class="botao" id="botaoslides" type="button" value="Eliminar Pasta"></a>
+</p>
+
+
+<form action="{% url 'modulo:novo_slide' %}" method="post">
+    Nome da Pasta:
+    <input type="text" name="nome_slide" required>
+    <input class="botao" type="submit" value="Adicionar Pasta">
+    {%csrf_token%}
+</form>
+{% endif %}
+</section>
+{% endblock %}

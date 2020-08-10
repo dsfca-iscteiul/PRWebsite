@@ -1,0 +1,33 @@
+{% extends 'modulo/index.html' %}
+
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'modulo/styles/pastasconteudos.css' %}"/>
+
+{% block forum %}
+{% endblock %}
+{% block body %}
+<h1>Slide {{ slide.nome_pasta }}</h1>
+{% if error_message %}
+{{ error_message }}
+<br>
+{% endif %}
+{% if list %}
+    {% for ficheiro in list %}
+        {% with 'modulo/slides/'|add:slide.nome_pasta|add:"/"|add:ficheiro as image_static %}
+                <a href="{% static image_static %}">{{ ficheiro }}</a><br>
+        {% endwith %}
+    {% endfor %}
+{% else %}
+<p><strong>Não há slides {{ slide.nome_slide }}</strong></p>
+{% endif%}
+<br>
+
+{% if user.is_superuser %}
+<form method="post" enctype="multipart/form-data">
+{% csrf_token %}
+<input type="file" name="myfile" required>
+<button class="small" type="submit">Upload</button>
+</form>
+<a href="{% url 'modulo:eliminar_ficheiro' slide.id %}"><button class="small">Eliminar Ficheiro</button></a>
+{% endif %}
+{% endblock %}

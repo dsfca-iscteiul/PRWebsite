@@ -1,0 +1,183 @@
+{% extends 'modulo/index.html' %}
+{% block forum %}
+{% endblock %}
+
+{% block body%}
+
+<h1>Horário</h1>
+<form>
+    <table class="tabelahorario">
+        <thead>
+        <tr>
+            <th>Horas/Dias</th>
+            <th>segunda-feira</th>
+            <th>terça-feira</th>
+            <th>quarta-feira</th>
+            <th>quinta-feira</th>
+            <th>sexta-feira</th>
+        </tr>
+        </thead>
+        <tfoot>
+        <tr>
+            <td colspan="6">
+                <div class="links">
+
+                    <a href="#">&laquo;</a>
+                    {% if semanas %}
+                    {% for semana in semanas %}
+                    <a href="{% url 'modulo:horario' semana.id %}">{{semana.id}}</a>
+                    {% endfor %}
+                    {% endif %}
+                    <a href="#">&raquo;</a></div>
+            </td>
+        </tr>
+        </tfoot>
+        <tbody>
+        <tr>
+            <td>8:00-9:30</td>
+            <td>
+                {% if aulas_segunda %}
+                {% for aula in aulas_segunda %}
+                {% if aula.hora_inicio == '08:00' %}
+                {{ aula.sala }}
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+            </td>
+            <td>
+                {% if aulas_terca %}
+                {% for aula in aulas_terca %}
+                {% if aula.hora_inicio == '08:00' %}
+                {{ aula.sala }}
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+            </td>
+            <td>
+                {% if aulas_quarta %}
+                {% for aula in aulas_quarta %}
+                {% if aula.hora_inicio == '08:00' %}
+                {{ aula.sala }}
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+            </td>
+            <td> {% if aulas_quinta %}
+                {% for aula in aulas_quinta %}
+                {% if aula.hora_inicio == '08:00' %}
+                {{ aula.sala }}
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+            </td>
+            <td> {% if aulas_sexta %}
+                {% for aula in aulas_sexta %}
+                {% if aula.hora_inicio == '08:00' %}
+                {{ aula.sala }}
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <td>9:30-11:00</td>
+            <td>
+                {% if aulas_segunda %}
+                {% for aula in aulas_segunda %}
+                {% if aula.hora_inicio == '09:30' %}
+                {{ aula.sala }}
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+            </td>
+            <td>
+                {% if aulas_terca %}
+                {% for aula in aulas_terca %}
+                {% if aula.hora_inicio == '09:30' %}
+                {{ aula.sala }}
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+            </td>
+            <td>
+                {% if aulas_quarta %}
+                {% for aula in aulas_quarta %}
+                {% if aula.hora_inicio == '09:30' %}
+                {{ aula.sala }}
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+            </td>
+            <td> {% if aulas_quinta %}
+                {% for aula in aulas_quinta %}
+                {% if aula.hora_inicio == '09:30:00' %}
+                {{ aula.sala }}
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+            </td>
+            <td> {% if aulas_sexta %}
+                {% for aula in aulas_sexta %}
+                {% if aula.hora_inicio == '09:30' %}
+                {{ aula.sala }}
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <td>11:00-12:30</td>
+            <td>
+                {% if aulas_segunda %}
+                {% for aula in aulas_segunda %}
+                {% if aula.hora_inicio == '11:00' %}
+                {{ aula.sala }}
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+            </td>
+            <td>
+                {% if aulas_terca %}
+                {% for aula in aulas_terca %}
+                {% if aula.hora_inicio == '11:00' %}
+                {{ aula.sala }}
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+            </td>
+            <td>
+                {% if aulas_quarta %}
+                {% for aula in aulas_quarta %}
+                {% if aula.hora_inicio == '11:00' %}
+                {{ aula.sala }}
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+            </td>
+            <td> {% if aulas_quinta %}
+                {% for aula in aulas_quinta %}
+                {% if aula.hora_inicio == '11:00' %}
+                {{ aula.sala }}
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+            </td>
+            <td> {% if aulas_sexta %}
+                {% for aula in aulas_sexta %}
+                {% if aula.hora_inicio == '11:00' %}
+                {{ aula.sala }}
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+            </td>
+        </tbody>
+    </table>
+</form>
+
+{% if user.is_superuser %}
+<a href="{% url 'modulo:inserir_aula' %}">
+    <button>inserir aula</button>
+</a>
+{% endif %}
+
+{% endblock %}

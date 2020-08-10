@@ -1,0 +1,30 @@
+{% extends 'modulo/index.html' %}
+{% block forum %}
+{% endblock %}
+
+{% block body %}
+
+
+
+<section class="whitebody">
+<h1>Fórum Perguntas</h1>
+{% if questao_list %}
+<h2>Perguntas encontradas para a procura: {{ query }}</h2>
+{% for questao in questao_list %}
+    <a href="{% url 'modulo:detalhepostforum' questao.id %}">{{ questao.questao_texto }}</a><br>
+
+{% endfor %}
+{% else %}
+<h2>Não foram encontradas questões para a procura: {{ query }}</h2>
+{% endif %}
+
+{% if respostas_list %}
+<h2>Respostas encontradas para a procura: {{ query }}</h2>
+{% for resposta in respostas_list %}
+        <a href="{% url 'modulo:detalhepostforum' resposta.questao.id %}">{{ resposta.resposta_texto}}<br></a>
+{% endfor %}
+{% else %}
+<h2>Não foram encontradas respostas para a procura: {{ query }}</h2>
+{% endif %}
+</section>
+{% endblock %}

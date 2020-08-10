@@ -1,0 +1,38 @@
+{% extends 'modulo/index.html' %}
+{% block forum %}
+{% endblock %}
+{% block body %}
+
+
+<h1>Listas Negras</h1>
+
+<h2>Lista Negra Questões</h2>
+{% if lista_denuncias_questoes %}
+  <ol>
+ {% for questao in lista_denuncias_questoes %}
+    <li>{{ questao.questao_texto }}<br>
+        Numero de denuncias:{{questao.denuncias}}<br>
+        data de publicação:{{questao.pub_data}}
+        <a href="{% url 'modulo:eliminar_listanegra' questao.id 0%}"><button id="eliminar">eliminar</button> </a>
+    </li>
+ {% endfor %}
+         </ol>
+{% else %}
+<p><strong>Não existe questões com mais de 10 denuncias</strong></p>
+{% endif %}
+
+<h2>Lista Negra Respostas</h2>
+{% if lista_denuncias_respostas %}
+  <ol>
+ {% for resposta in lista_denuncias_respostas %}
+    <li>{{ resposta.resposta_texto }}<br>
+        Dono:{{resposta.resposta_dono}}<br>
+        data de publicação:{{resposta.resposta_pub_data}}
+        <a href="{% url 'modulo:eliminar_listanegra' resposta.id 1%}"><button id="eliminar">eliminar</button> </a>
+    </li>
+ {% endfor %}
+         </ol>
+{% else %}
+<p><strong>Não existem respostas com mais de 10 denuncias</strong></p>
+{% endif %}
+{%endblock%}

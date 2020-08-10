@@ -1,0 +1,17 @@
+{% extends 'modulo/index.html' %}
+{% block forum %}
+{% endblock %}
+{% block body %}
+<h1>Eliminar Miniteste</h1>
+{% if error_message %}
+<p><strong>{{error_message}}</strong></p>
+{% endif %}
+<form action="{% url 'modulo:eliminar' %}" method="post">
+{% for miniteste in minitestes %}
+<input type="radio" value="{{miniteste.id}}" id="{{miniteste.id}}" name="miniteste">
+    <label>Miniteste {{miniteste.id}}</label><br>
+{% endfor %}
+    <input type="submit" value="eliminar">
+    {% csrf_token %}
+</form>
+{% endblock %}

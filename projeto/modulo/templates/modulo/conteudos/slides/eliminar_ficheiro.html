@@ -1,0 +1,17 @@
+{% extends 'modulo/index.html' %}
+{% block forum %}
+{% endblock %}
+{% block body %}
+<h1>Slide {{slide.nome_pasta}}</h1>
+{% if error_message %}
+<p><strong>{{error_message}}</strong></p>
+{% endif %}
+<form action="{% url 'modulo:apagar_ficheiro' slide.id %}" method="post">
+{% for ficheiro in ficheiros %}
+<input type="radio" value="{{ficheiro.id}}" id="{{ficheiro.id}}" name="ficheiro">
+    <label>{{ficheiro.nome_ficheiro}}</label><br>
+{% endfor %}
+    <input type="submit" value="eliminar">
+    {% csrf_token %}
+</form>
+{% endblock %}

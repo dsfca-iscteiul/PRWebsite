@@ -1,0 +1,18 @@
+{% extends 'modulo/index.html' %}
+{% block forum %}
+{% endblock %}
+{% block body %}
+
+<h1>Alterar Palavra passe</h1>
+{% if error_message %}
+<p><strong>{{ error_message }}</strong></p>
+{% endif %}
+<form action="{% url 'modulo:alterarpasse' %}" method="post">
+    palavra passe novo:
+    <input type="password" name="old"><br>
+    confirmar palavra passe nova:
+    <input type="password" name="new"><br>
+    <input type="submit" value="alterar">
+    {% csrf_token %}
+</form>
+{%endblock%}

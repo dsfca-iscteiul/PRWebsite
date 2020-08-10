@@ -1,0 +1,34 @@
+{% extends 'modulo/index.html' %}
+{% block forum %}
+{% endblock %}
+
+{% block body %}
+<section class="whitebody">
+<h1>Datas de Avaliações</h1>
+{% if datas %}
+<ul>
+    {% for data in datas %}
+    <li>{{data.descrição}}<br>
+        {{data.data}}<br>
+        {{data.sala}}
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p><strong>Não há datas de avaliações no momento</strong></p>
+{% endif %}
+{% if user.is_superuser %}
+<form action="{% url 'modulo:inserir_data' %}" method="post">
+    Descrição:
+    <input type="text" name="descricao" required><br>
+    data:
+    <input type="datetime-local" name="data" required><br>
+    Sala do evento:
+    <input type="text" name="sala" required><br>
+    <input class="botao" type="submit" value="adicionar data do evento">
+    {% csrf_token %}
+</form>
+<a href="{% url 'modulo:eliminar_data' %}"><button class="botao2">Eliminar</button></a>
+{% endif %}
+</section>
+{% endblock %}

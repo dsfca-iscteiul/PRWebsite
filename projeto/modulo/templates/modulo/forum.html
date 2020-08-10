@@ -1,0 +1,38 @@
+{% extends 'modulo/index.html' %}
+{% block forum %}
+{% endblock %}
+
+{% block body %}
+
+<h1>Forum Perguntas </h1>
+<form action="{% url 'modulo:procura' %}" method="post">
+    <input type="text" name="q"><input type="submit" value="Procurar">
+    {% csrf_token %}
+</form>
+
+{% if latest_question_list %}
+<ul>
+    {% for questao in latest_question_list %}
+    <li>
+        <a href="{% url 'modulo:detalhepostforum' questao.id %}">
+            {{ questao.questao_texto }}
+        </a>
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p><strong>Não há questões recentes</strong></p>
+{% endif %}
+
+<form action="{% url 'modulo:enviar_pergunta_modulo' %}" method="post">
+    {% csrf_token %}
+    <div>
+        <label for="pergunta">pergunta</label>
+    <textarea  name="pergunta" id="pergunta" rows="5" width="5" required></textarea>
+    </div>
+    <div>
+    <input type="submit" value="enviar">
+    </div>
+</form>
+
+{% endblock %}

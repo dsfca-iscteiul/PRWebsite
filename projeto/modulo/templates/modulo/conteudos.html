@@ -1,0 +1,48 @@
+{% extends 'modulo/index.html' %}
+
+{% block forum %}
+{% endblock %}
+
+{% block body %}
+
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'modulo/styles/header.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'modulo/styles/pastasconteudos.css' %}"/>
+
+
+<section class="conteudos">
+    <h1>Conteudos da Cadeira</h1>
+    <table>
+        <tr>
+            <td>
+                <button onclick="location.href = '{% url 'modulo:minitestes' %}'">
+                    <img class="pastasImg" src="{% static 'modulo/folder2.png' %}"><br>
+                    Minitestes
+                </button>
+            </td>
+            <td>
+                <button onclick="location.href = '{% url 'modulo:exercicios' %}'">
+                    <img class="pastasImg" src="{% static 'modulo/folder2.png' %}"><br>
+                    Exercicios
+                </button>
+            </td>
+        </tr>
+        <br>
+        <tr>
+            <td>
+                <button onclick="location.href = '{% url 'modulo:slides' %}'">
+                    <img class="pastasImg" src="{% static 'modulo/folder2.png' %}"><br>
+                    Slides
+                </button>
+            </td>
+            <td>
+                <button onclick="location.href = '{% url 'modulo:bibliografia' %}'">
+                    <img class="pastasImg" src="{% static 'modulo/folder2.png' %}"><br>
+                    Bibliografia
+                </button>
+            </td>
+        </tr>
+    </table>
+</section>
+{% endblock %}
+

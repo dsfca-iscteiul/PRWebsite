@@ -1,0 +1,49 @@
+{% extends 'modulo/index.html' %}
+{% block forum %}
+{% endblock %}
+{% block body %}
+
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'modulo/styles/menu2.css' %}" />
+
+<div class="margemEsquerda">{{ user.username }}</div>
+<div id="userMenu">
+    <ul>
+        <li>
+            <a href="{% url 'modulo:alterarpalavrapasse' %}"><span>Alterar palavra passe</span></a>
+        </li>
+        <li>
+            <a href="{% url 'modulo:logoutview' %}"><span>Logout</span></a>
+        </li>
+    </ul>
+</div><br>
+{% if user.is_superuser %}
+<div class="margemEsquerda">Gestão de alunos</div>
+<div id="userMenu">
+    <ul>
+        <li>
+            <a href="{% url 'modulo:darnota' %}"><span>Dar nota a aluno</span></a>
+        </li>
+        <li>
+            <a href="{% url 'modulo:lista_negra' %}"><span>Lista Negra</span></a>
+        </li>
+        <li>
+            <a href="{% url 'modulo:vernota_alunos' %}"><span>Ver notas de alunos</span></a>
+        </li>
+        <li>
+            <a href="{% url 'modulo:darnota' %}"><span>Dar nota a aluno</span></a>
+        </li>
+    </ul>
+</div>
+{% else %}
+<div id="userMenu">
+    Informações Pessoais
+    <ul>
+        <li>
+            <a href="{% url 'modulo:vernota' user.id %}"><span>minhas notas</span></a>
+        </li>
+    </ul>
+</div>
+
+{% endif %}
+{% endblock %}

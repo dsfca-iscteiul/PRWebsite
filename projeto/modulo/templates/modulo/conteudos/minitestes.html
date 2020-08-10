@@ -1,0 +1,38 @@
+{% extends 'modulo/index.html' %}
+{% block forum %}
+{% endblock %}
+
+
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'modulo/styles/minitestes.css' %}"/>
+
+{% block body %}
+
+
+<h1>Mini Testes</h1>
+{% if minitestes %}
+<ul>
+    {% for miniteste in minitestes %}
+    <div class="caixaMiniteste">
+        <li>
+            <button onclick="location.href = '{% url 'modulo:detalheminiteste' miniteste.id %}'">
+                Miniteste {{miniteste.numero}} - {{miniteste.descricao}}
+            </button>
+        </li>
+    </div>
+    {% endfor %}
+</ul>
+
+{% else %}
+<p>Não há minitestes</p>
+{% endif %}
+<div class="center">
+    {% if user.is_superuser %}
+    <p>
+        <a href="{% url 'modulo:criarminiteste' %}"><input type="button" value="Criar novo miniteste"><br>
+            <a href="{% url 'modulo:eliminar_miniteste' %}"><input type="button" value="Eliminar miniteste">
+    </p>
+    {% endif %}
+</div>
+
+{%endblock%}

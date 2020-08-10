@@ -1,0 +1,22 @@
+{% extends 'modulo/index.html' %}
+{% block forum %}
+{% endblock %}
+
+{% block body %}
+<section class="whitebody">
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'modulo/styles/pastasconteudos.css' %}"/>
+    <h1>Criar Miniteste</h1>
+
+<div>
+    <form action="{% url 'modulo:adicionarminiteste' %}" method="post">
+         {% csrf_token %}
+        <h3>Descrição do Miniteste:<input type="text" name="descricaomt" id="descricaomt" size="50"></h3>
+        <input class="botao" type="submit" value="Criar">
+
+    </form>
+    <button class="botao" onclick="location.href='{% url 'modulo:minitestes' %}'">Cancelar</button>
+
+</div>
+</section>
+{% endblock %}

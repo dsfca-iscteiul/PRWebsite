@@ -1,0 +1,48 @@
+{% extends 'modulo/index.html' %}
+{% load staticfiles %}
+{% block forum %}
+{% endblock %}
+
+{% block body %}
+
+<h1>Fórum Perguntas</h1>
+
+<div class="zona">
+    <h3>{{ questao.questao_texto }}</h3>
+    {% if not denunciante %}
+    <a href="{% url 'modulo:denunciar_post' questao.id%}">
+        <button class="small">denunciar</button>
+    </a>
+    {% endif %}
+    {% if user.username == questao.username %}
+    <a href="{% url 'modulo:apagar_questao' questao.id%}">
+        <button class="small">eliminar</button>
+    </a>
+    {% endif %}
+
+    {% if error_message %}
+    {{error_message}}
+    {% endif %}
+
+    <ol>
+        {% for resposta in questao.resposta_set.all %}
+        <li>{{ resposta.resposta_texto }}<br>
+            Dono:{{resposta.resposta_dono}}<br>
+            data de publicação:{{resposta.resposta_pub_data}}
+            {% if user.username == resposta.resposta_dono %}
+            <a href="{% url 'modulo:apagar_resposta' resposta.id%}">
+                <img class="delete" src="{% static 'modulo/recycle-icon.png' %}">
+            </a>
+            {% endif %}
+
+        </li>
+        {% endfor %}
+    </ol>
+    <form action="{% url 'modulo:adicionarresposta' questao.id %}" method="post" enctype="multipart/form-data">
+        <input type="text" name="resposta" required>
+        <input type="submit" value="adicionar resposta">
+
+        {% csrf_token %}
+    </form>
+</div>
+{% endblock %}

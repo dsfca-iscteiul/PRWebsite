@@ -1,0 +1,23 @@
+:root {
+
+}
+
+html body {
+    background-image: url("../logo.jpeg");
+    background-repeat: no-repeat;
+    background-position: 500px 400px;
+    background-size: 500px;
+    background-color: rgb(245,245,245);
+
+}
+
+.button {
+    margin: 5px 0 0 0;
+    padding: 8px 23px;
+    border-radius: 10px;
+    font-size: 12px;
+}
+
+.error {
+    color: #ff3333;
+}

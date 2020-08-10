@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'modulo/styles/login.css' %}"/>
+</head>
+<body>
+<section class="loginblock">
+    <h1>PR - Programação em Rede</h1>
+    {% if error_message %}
+    <p><strong class="error">{{ error_message }}</strong></p>
+    {% endif %}
+    <form class="form" action="{% url 'modulo:loginview' %}" method="post">
+        Nome de utilizador:
+        <input type="text" name="username"><br><br>
+        Palavra passe:
+        <input type="password" name="password"><br>
+
+        <input class="button" type="submit" value="entrar">
+        {% csrf_token %}
+    </form>
+    <br>
+    <a href="{% url 'modulo:esqueci_palavra_passe' %}">Esqueci a palavra-passe</a>
+</section>
+</body>
+</html>

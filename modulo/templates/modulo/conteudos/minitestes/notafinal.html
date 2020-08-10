@@ -1,0 +1,8 @@
+{% extends 'modulo/index.html' %}
+{% block forum %}
+{% endblock %}
+{% block body %}
+<h1>Mini-Teste {{ miniteste.id }}</h1>
+<p><strong>Nota final do aluno:{{notafinal}} pontos</strong></p><br>
+<a href="{% url 'modulo:index' %}"><input type="button" value="ok"></a>
+{% endblock %}

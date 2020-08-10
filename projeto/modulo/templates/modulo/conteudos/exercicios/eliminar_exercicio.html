@@ -1,0 +1,22 @@
+
+{% extends 'modulo/index.html' %}
+{% block forum %}
+{% endblock %}
+
+{% block body %}
+
+
+
+<h1>Eliminar Exercicio</h1>
+{% if error_message %}
+<p><strong>{{error_message}}</strong></p>
+{% endif %}
+<form action="{% url 'modulo:apagar_exercicio' %}" method="post">
+{% for exercicio in exercicios %}
+<input type="radio" value="{{exercicio.id}}" id="{{exercicio.id}}" name="exercicio">
+    <label>{{ exercicio.nome_exercicio }}</label><br>
+{% endfor %}
+    <input type="submit" value="eliminar">
+    {% csrf_token %}
+</form>
+{% endblock %}
